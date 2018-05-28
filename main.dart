@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import './pages/gesturedetectorPage.dart';
 import './pages/rainappPage.dart';
+import './pages/loginAppPage.dart';
+import './pages/planetPage.dart';
 
 void main() {
   runApp(new MaterialApp(
@@ -8,7 +10,9 @@ void main() {
     home: new HomePage(),
     routes: <String, WidgetBuilder>{
       "/Gesture_App" : (BuildContext ctx) => new GestureApp(),
-      "/Rain_App" : (BuildContext ctx) => new RainApp()
+      "/Rain_App" : (BuildContext ctx) => new RainApp(),
+      "/login_app" : (BuildContext context) => new LoginApp(),
+      "/Planet_App" :  (BuildContext context) => new PlanetApp()
     }
 
   ));
@@ -32,16 +36,24 @@ class HomePage extends StatelessWidget{
                       Navigator.of(ctx).pushNamed("/Rain_App");
                     }),
 
-                  new Container(
-                    padding: new EdgeInsets.all(5.0),
-                  ),
-
                   new IconButton(
                     icon: new Icon(Icons.gesture),
                     onPressed: () {
                             Navigator.of(ctx).pushNamed("/Gesture_App");
                     }),
-                            
+
+
+                  new IconButton(
+                    icon: new Icon(Icons.account_box),
+                    onPressed: () {
+                            Navigator.of(ctx).pushNamed("/login_app");
+                    }),
+                  
+                  new IconButton(
+                    icon: new Icon(Icons.language),
+                    onPressed: () {
+                            Navigator.of(ctx).pushNamed("/Planet_App");
+                    }),
                 ],
               ),
 
@@ -53,6 +65,11 @@ class HomePage extends StatelessWidget{
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               new Text("Demo App", style: new TextStyle(fontSize: 50.0),),
+
+
+              new Container(
+                child:new Text("Release Mode", style: new TextStyle(fontSize: 20.0),)
+              ),
             ],
           ),
         ), 
@@ -62,9 +79,14 @@ class HomePage extends StatelessWidget{
 //Bottom Navigation Bar
     bottomNavigationBar: 
       new BottomNavigationBar(items: [
-        new BottomNavigationBarItem(icon: Icon(Icons.image, color: Colors.black54,), title: new Text("Image")),
-        new BottomNavigationBarItem(icon: Icon(Icons.home, color: Colors.black54,), title: new Text("Home")),
-        new BottomNavigationBarItem(icon: Icon(Icons.poll, color: Colors.black54,), title: new Text("Poll")),
+        new BottomNavigationBarItem(
+          icon: Icon(Icons.image, color: Colors.black54,), title: new Text("Image")),
+          
+        new BottomNavigationBarItem(
+          icon: Icon(Icons.home, color: Colors.black54,), title: new Text("Home")),
+
+        new BottomNavigationBarItem(
+          icon: Icon(Icons.poll, color: Colors.black54,), title: new Text("Poll")),
       ], onTap: (value) => debugPrint("Tapped $value"),),
 
 
@@ -78,4 +100,3 @@ class HomePage extends StatelessWidget{
     );
   }
 }
-
