@@ -14,7 +14,7 @@ void main() {
       "/Rain_App" : (BuildContext ctx) => new RainApp(),
       "/login_app" : (BuildContext context) => new LoginApp(),
       "/Planet_App" :  (BuildContext context) => new PlanetApp(),
-      "/BMI_App" : (BuildContext context) => BmiApp()
+      "/BMI_App" : (BuildContext ctx) => new BmiApp()
     }
 
   ));
