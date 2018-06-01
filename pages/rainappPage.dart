@@ -72,7 +72,16 @@ class MakeItRainState extends State<MakeItRain>{
               ),  
           ),
 
-
+            new Expanded(
+              child: new Center(
+                child: new Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    new Text("Displayed Integers turns red when Money reached 3000 or above"),
+                  ],
+                ),
+              ),
+            ),
 
             new Expanded(
               child: new Center(

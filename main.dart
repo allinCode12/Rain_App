@@ -3,6 +3,7 @@ import './pages/gesturedetectorPage.dart';
 import './pages/rainappPage.dart';
 import './pages/loginAppPage.dart';
 import './pages/planetPage.dart';
+import './pages/bmiPage.dart';
 
 void main() {
   runApp(new MaterialApp(
@@ -12,7 +13,8 @@ void main() {
       "/Gesture_App" : (BuildContext ctx) => new GestureApp(),
       "/Rain_App" : (BuildContext ctx) => new RainApp(),
       "/login_app" : (BuildContext context) => new LoginApp(),
-      "/Planet_App" :  (BuildContext context) => new PlanetApp()
+      "/Planet_App" :  (BuildContext context) => new PlanetApp(),
+      "/BMI_App" : (BuildContext ctx) => BmiApp()
     }
 
   ));
@@ -66,9 +68,16 @@ class HomePage extends StatelessWidget{
             children: <Widget>[
               new Text("Demo App", style: new TextStyle(fontSize: 50.0),),
 
-
+              new Padding(padding: new EdgeInsets.all(10.5),),
               new Container(
-                child:new Text("Release Mode", style: new TextStyle(fontSize: 20.0),)
+                child:new FlatButton(
+                  color: Colors.redAccent[400],
+                  child: new Text("BMI App",
+                                 style: new TextStyle(color: Colors.white, fontSize: 30.0),),
+                  onPressed: () {
+                    Navigator.of(ctx).pushNamed("/BMI_App");
+                  },
+                ),
               ),
             ],
           ),
