@@ -14,7 +14,7 @@ void main() {
       "/Rain_App" : (BuildContext ctx) => new RainApp(),
       "/login_app" : (BuildContext context) => new LoginApp(),
       "/Planet_App" :  (BuildContext context) => new PlanetApp(),
-      "/BMI_App" : (BuildContext ctx) => BmiApp()
+      "/BMI_App" : (BuildContext context) => BmiApp()
     }
 
   ));
@@ -76,7 +76,7 @@ class HomePage extends StatelessWidget{
                                  style: new TextStyle(color: Colors.white, fontSize: 30.0),),
                   onPressed: () {
                     Navigator.of(ctx).pushNamed("/BMI_App");
-                  },
+                  },  
                 ),
               ),
             ],
