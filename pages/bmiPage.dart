@@ -10,6 +10,7 @@ class BmiApp extends StatefulWidget{
 class BmiAppState extends State<BmiApp>{
   final TextEditingController _heightController = new TextEditingController();
   final TextEditingController _weightController = new TextEditingController();
+  
   @override
   Widget build(BuildContext context) {
     
@@ -40,7 +41,6 @@ class BmiAppState extends State<BmiApp>{
             
             child: new Column(
               children: <Widget>[
-
                 new TextField(
                                   controller: _heightController,
                                   keyboardType: TextInputType.number,
@@ -50,7 +50,6 @@ class BmiAppState extends State<BmiApp>{
                                   ),
                                 ),
 
-
                 new TextField(
                                   controller: _weightController,
                                   keyboardType: TextInputType.number,
@@ -59,7 +58,6 @@ class BmiAppState extends State<BmiApp>{
                                     icon: new Icon(Icons.line_weight),
                                   ),
                                 ),
-
 
                 new Container(
                   alignment: Alignment.center,
