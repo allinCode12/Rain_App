@@ -8,9 +8,32 @@ class BmiApp extends StatefulWidget{
 }
 
 class BmiAppState extends State<BmiApp>{
+  final TextEditingController _ageController = new TextEditingController();
   final TextEditingController _heightController = new TextEditingController();
   final TextEditingController _weightController = new TextEditingController();
+  double inches =0.0;
+  double result = 0.0;
+
   
+  void _calculateBMI() {
+    setState(() {
+          int age = int.parse(_ageController.text);
+          double height = double.parse(_heightController.text);
+          inches = height*12;
+          double weight = double.parse(_weightController.text);
+
+          if ((_ageController.text.isNotEmpty || age > 0) 
+            && (_weightController.text.isNotEmpty || weight >0) 
+              && (_heightController.text.isNotEmpty)) {
+              result = weight / (inches * inches) * 703;
+          }else {
+            result = 0.0;
+          }
+
+        });
+  }
+
+   
   @override
   Widget build(BuildContext context) {
     
@@ -30,8 +53,8 @@ class BmiAppState extends State<BmiApp>{
           
           new Image.asset(
             'lib/images/bmilogo.png',
-              height: 133.0,
-              width: 200.0,
+              height: 85.0,
+              width: 75.0,
           ),
 
           new Container(
@@ -41,11 +64,21 @@ class BmiAppState extends State<BmiApp>{
             
             child: new Column(
               children: <Widget>[
+              
+                new TextField(
+                                  controller: _ageController,
+                                  keyboardType: TextInputType.number,
+                                  decoration: new InputDecoration(
+                                    labelText: 'Age',
+                                    icon: new Icon(Icons.person),
+                                  ),
+                                ),
+
                 new TextField(
                                   controller: _heightController,
                                   keyboardType: TextInputType.number,
                                   decoration: new InputDecoration(
-                                    hintText: 'Height in feet',
+                                    labelText: 'Height in feet',
                                     icon: new Icon(Icons.poll),
                                   ),
                                 ),
@@ -54,7 +87,7 @@ class BmiAppState extends State<BmiApp>{
                                   controller: _weightController,
                                   keyboardType: TextInputType.number,
                                   decoration: new InputDecoration(
-                                    hintText: 'Height in feet',
+                                    labelText: 'Height in feet',
                                     icon: new Icon(Icons.line_weight),
                                   ),
                                 ),
@@ -67,13 +100,23 @@ class BmiAppState extends State<BmiApp>{
                     color: Colors.red,
                     splashColor: Colors.purple,
                     shape: const StadiumBorder(),
-                    onPressed: (){},
+                    onPressed: _calculateBMI,
                   ),
                 )
               ],
             ),
+
           ),
-            
+          
+          new Container(
+            alignment: Alignment.center,
+            margin: new EdgeInsets.all(3.0),
+            child: new Text("Your BMI: $result", 
+            style: new TextStyle(
+              fontSize: 20.0, 
+              fontWeight: FontWeight.w500, 
+              fontStyle: FontStyle.italic),),
+          ),  
           ],
         ),
       ),
